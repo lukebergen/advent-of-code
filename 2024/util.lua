@@ -1,6 +1,6 @@
 local M = {}
 
-M.fileLines = function(fileName)
+M.readFile = function(fileName)
   local file = io.open(fileName, "r")
   local contents
   if file then
@@ -10,7 +10,11 @@ M.fileLines = function(fileName)
     print("uhoh")
     os.exit(1)
   end
+  return contents
+end
 
+M.fileLines = function(fileName)
+  local contents = M.readFile(fileName)
   local result = {}
 
   for line in contents:gmatch("[^\n]*") do
