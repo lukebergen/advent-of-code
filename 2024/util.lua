@@ -33,6 +33,12 @@ M.split = function(str, delimiter)
   return result
 end
 
+M.chars = function(str)
+  local chars = {}
+  str:gsub(".", function(c) table.insert(chars, c) end)
+  return chars
+end
+
 M.map = function(arr, callback)
   local r = {}
   for _, e in ipairs(arr) do
